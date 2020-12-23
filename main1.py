@@ -12,9 +12,9 @@ prompts = ['Pyreadpdf - A program that reads out text from a pdf file...',
            'Enter the number of the first page you want to read.: ', 'Enter the number of the last page you want to read.: ']
 
 err_prompts = ['Not a directory error.',
-	       'File not found error.',
-	       'Value error.',
-	       'Error: Something went wrong. Please relaunch program and try again...']
+               'File not found error.',
+               'Value error.',
+               'Error: Something went wrong. Please relaunch program and try again...']
 
 def main():
     screen_clear()
@@ -80,7 +80,7 @@ def main():
         # read the pages
         for pg in pagesinbooktoread:
             print('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
-            print('-----------------------------------')
+            print('----------------------')
             pytts1.textToSpeach('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
             print(pg)
             pytts1.textToSpeach(pg)
@@ -105,6 +105,7 @@ def main():
     finally:
         print('Done reading.')
         pytts1.textToSpeach('Done reading.')
+
 
 def screen_clear():
    # for mac and linux(here, os.name is 'posix')
