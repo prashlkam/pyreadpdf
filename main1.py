@@ -80,7 +80,7 @@ def main():
         # read the pages
         for pg in pagesinbooktoread:
             print('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
-            print('----------------------')
+            print('---------------------------------------')
             pytts1.textToSpeach('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
             print(pg)
             pytts1.textToSpeach(pg)
