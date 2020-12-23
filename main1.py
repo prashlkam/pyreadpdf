@@ -9,10 +9,15 @@ prompts = ['Pyreadpdf - A program that reads out text from a pdf file...',
            'Pdf files in this directory are... ', 'There are no pdf files here.',
            'Which pdf file do you want to read? ',
            'Do you want to read one page or multiple pages? ', 'Press 1 for single page, 2 for a range of pages or 3 for the entire book.: ',
-           'Enter the number of the first page you want to read.: ', 'Enter the number of the last page you want to read.: ',
-           'Error: Something went wrong. Please relaunch program and try again...']
+           'Enter the number of the first page you want to read.: ', 'Enter the number of the last page you want to read.: ']
+
+err_prompts = ['Not a directory error.',
+			   'File not found error.',
+			   'Value error.'
+			   'Error: Something went wrong. Please relaunch program and try again...']
 
 def main():
+	screen_clear()
     print(prompts[0])
     pytts1.textToSpeach(prompts[0])
     pytts1.textToSpeach(prompts[1])
@@ -68,6 +73,7 @@ def main():
                     pagestoread.append(i)
             else:
                 raise RuntimeError
+        screen_clear()
         print('We will be reading pages ' + str(pagestoread) + ' from the book ' + fltoread + '...')
         pytts1.textToSpeach('We will be reading pages ' + str(pagestoread) + ' from the book ' + fltoread)
         pagesinbooktoread = reader.getTextFromPdf(fltoread, pagestoread)
@@ -79,25 +85,33 @@ def main():
             print(pg)
             pytts1.textToSpeach(pg)
     except NotADirectoryError:
-        print('Not a directory error.')
-        pytts1.textToSpeach('Not a directory error.')
-        print(prompts[-1])
-        pytts1.textToSpeach(prompts[-1])
+        print(err_prompts[0])
+        pytts1.textToSpeach(err_prompts[0])
+        print(err_prompts[-1])
+        pytts1.textToSpeach(err_prompts[-1])
     except FileNotFoundError:
-        print('File not found error.')
-        pytts1.textToSpeach('File not found error.')
-        print(prompts[-1])
-        pytts1.textToSpeach(prompts[-1])
+        print(err_prompts[1])
+        pytts1.textToSpeach(err_prompts[1])
+        print(err_prompts[-1])
+        pytts1.textToSpeach(err_prompts[-1])
     except ValueError:
-        print('Value error.')
-        pytts1.textToSpeach('Value error.')
-        print(prompts[-1])
-        pytts1.textToSpeach(prompts[-1])
+        print(err_prompts[2])
+        pytts1.textToSpeach(err_prompts[2])
+        print(err_prompts[-1])
+        pytts1.textToSpeach(err_prompts[-1])
     except RuntimeError:
-        print(prompts[-1])
-        pytts1.textToSpeach(prompts[-1])
+        print(err_prompts[-1])
+        pytts1.textToSpeach(err_prompts[-1])
     finally:
         print('Done reading.')
         pytts1.textToSpeach('Done reading.')
 
+def screen_clear():
+   # for mac and linux(here, os.name is 'posix')
+   if os.name == 'posix':
+      _ = os.system('clear')
+   else:
+      # for windows platfrom
+      _ = os.system('cls')
+   
 main()
