@@ -79,9 +79,9 @@ def main():
         pagesinbooktoread = reader.getTextFromPdf(fltoread, pagestoread)
         # read the pages
         for pg in pagesinbooktoread:
-            print('Reading page ' + str(pagesinbooktoread.index(pg)+1))
-            print('----------------------')
-            pytts1.textToSpeach('Reading page ' + str(pagesinbooktoread.index(pg)+1))
+            print('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
+            print('-----------------------------------')
+            pytts1.textToSpeach('Reading page ' + str(pagesinbooktoread.index(pg)+1) + ' of ' + str(len(pagesinbooktoread)))
             print(pg)
             pytts1.textToSpeach(pg)
     except NotADirectoryError:
