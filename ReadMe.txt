@@ -1,6 +1,6 @@
-Pyreadpdf - A tool that reads out pdf files.
+# Pyreadpdf - A tool that reads out pdf files.
 
-Installation:
+## Installation:
 --------------
 
 1/ Install python
