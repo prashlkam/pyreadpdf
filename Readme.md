@@ -25,7 +25,7 @@ Usage:
 1/ download zip file from github
 2/ extract the zip file to a directory
 3/ open a Terminal in that directory
-4/ type 'python3 main1.py' in the Terminal and press the <enter> key
+4/ type 'python3 pyreadpdf.py' in the Terminal and press the <enter> key
 5/ follow the directions as per the voice prompts
 
   Note:
